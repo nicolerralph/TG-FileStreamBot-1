@@ -36,6 +36,6 @@ class Var(object):
     if ON_HEROKU:
         URL = "https://{FQDN}/"
     else:
-        URL = "http{}://{}{}/".format(
+        URL = f"http{}://{}{}/".format(
             "s" if HAS_SSL else "", FQDN, "" if NO_PORT else ":" + str(PORT)
         )
