@@ -33,6 +33,15 @@ async def media_receive_handler(_, m: Message):
     await m.reply_text(
         text="<code>{}</code>\n(<a href='{}'>shortened</a>)".format(
             stream_link, short_link
+     
+            
+    await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
+        await m.reply_text(
+            text=msg_text.format(file_name, file_size, stream_link),
+            parse_mode="HTML", 
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Dᴏᴡɴʟᴏᴀᴅ ɴᴏᴡ 📥", url=stream_link)]]),
+            quote=True   
         ),
         quote=True,
         parse_mode="html",
